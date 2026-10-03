@@ -10,13 +10,13 @@ import org.calculoimc.utils.PathFXML;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(new FileInputStream(PathFXML.pathBase() + "\\main-view.fxml"));
-        Scene scene = new Scene(root, 320, 240);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(root, 800, 450);
+        stage.setTitle("Cálculo de IMC");
         stage.setScene(scene);
         stage.show();
     }

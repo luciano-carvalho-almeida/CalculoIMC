@@ -1,16 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.calculoimc.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.calculoimc.controller.MainController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <HBox prefHeight="250.0" prefWidth="690.0">
+         <children>
+            <VBox prefHeight="250.0" prefWidth="366.0">
+               <children>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Nome:" />
+                        <Label text="Altura:" GridPane.rowIndex="2" />
+                        <Label text="Peso:" GridPane.rowIndex="4" />
+                        <TextField fx:id="txtNome" promptText="Digite seu nome" GridPane.rowIndex="1" />
+                        <TextField fx:id="txtAltura" promptText="Digite seu altura" GridPane.rowIndex="3" />
+                        <TextField fx:id="txtPeso" promptText="Digite seu peso" GridPane.rowIndex="5" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="12.0" />
+                     </VBox.margin>
+                  </GridPane>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#onCalcularIMCClink" prefHeight="30.0" prefWidth="100.0" text="Calcular IMC" />
+                         <Button alignment="CENTER" mnemonicParsing="false" onAction="#onSalvarClick" prefHeight="30.0" prefWidth="100.0" text="Salvar">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                         <Button mnemonicParsing="false" onAction="#onCarregarClick" prefHeight="30.0" prefWidth="100.0" text="Carregar Dados" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="250.0" prefWidth="333.0">
+               <children>
+                  <Label text=" Cálculo IMC">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbIMC" text="00.00">
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="90.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="IbClassificacao" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+       <TableView fx:id="tabela" prefHeight="210.0" prefWidth="690.0">
+           <columns>
+               <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
+               <TableColumn fx:id="colNome" prefWidth="305.0" text="NOME" />
+               <TableColumn fx:id="colAltura" prefWidth="102.0" text="ALTURA" />
+               <TableColumn fx:id="colPeso" prefWidth="99.0" text="PESO" />
+               <TableColumn fx:id="colImc" prefWidth="108.0" text="IMC" />
+           </columns>
+       </TableView>
+   </children>
 </VBox>
